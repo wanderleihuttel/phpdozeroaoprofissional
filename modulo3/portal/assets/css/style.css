@@ -244,6 +244,7 @@ body{
     height: 335px;
     background-color: #999;
     overflow: hidden;
+    margin-bottom: 10px;
 }
 
 .slidebolinha {
@@ -339,4 +340,67 @@ body{
 
 .noticia_item a:hover {
     text-decoration: underline;
+}
+
+
+.noticiaarea1 {
+    width: 430;
+    height: 420px;
+    float: left;
+}
+
+.noticiaarea2 {
+    width: 320px;
+    height: 420px;
+    float: left;
+}
+
+.noticiaitem {
+    text-align: left;
+    height: 88px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.noticiaimg {
+    width:80px;
+    height: :80px;
+    border: 1px solid #CCC;
+    padding: 3px;
+    float: left;
+}
+
+.noticiatitulo {
+    margin-left: 6px;
+    font-size: 14px;
+    float: left;
+    width: 226px;
+}
+
+
+.noticiainfo {
+    font-size: 12px;
+    margin-left: 6px;
+    color: #CCC;
+    float: left;
+}
+
+
+.noticiabig {
+    margin-left: 10px;
+}
+
+.noticiabig .noticiaimg {
+    width: 384px;
+    height: 222px;
+}
+
+.noticiabig .noticiaimg img {
+    width: 384px;
+    height: 222px;
+}
+
+.noticiabig .noticiatitulo {
+    font-size: 30px;
+    width: 384px;
 }
