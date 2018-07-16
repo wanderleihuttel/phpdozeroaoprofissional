@@ -6,10 +6,12 @@
            .container {
            	   display: flex;
            	   height: 500px;
+           	   flex-wrap: wrap;
            	   flex-direction: row;
-           	   justify-content: center;
+           	   justify-content: space-between;
            	   align-items: center;
            	   background-color: #DDD;
+           	   align-content: space-between;
            }
 
            .container div{
@@ -19,15 +21,7 @@
            	   margin: 10px;
            	   padding: 10px;
            	   font-size: 18px
-           	}
-
-           	.div10 {
-           		order: 1;
-           	}
-
-           	.div14 {
-           		order: 1;
-           	}           	
+           	}        	
 
 
 		</style>
@@ -43,11 +37,11 @@
 			<div>7</div>
 			<div>8</div>
 			<div>9</div>
-			<div class="div10">10</div>
+			<div>10</div>
 			<div>11</div>
 			<div>12</div>
 			<div>13</div>
-			<div class="div10">14</div>
+			<div>14</div>
 			<div>15</div>
 		</div>	
 	</body>
