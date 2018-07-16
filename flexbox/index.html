@@ -5,42 +5,32 @@
 		<style type="text/css">
            .container {
            	   display: flex;
+           	   height: 500px;
            	   flex-direction: row;
+           	   justify-content: start-end;
+           	   align-items: flex-end;
            	   background-color: #DDD;
-           	   margin: 10px;
            }
 
-           .div1{
-           	   flex: 1;
+           .container div{
+           	   width:100px;
+           	   height: 100px;
            	   background-color: #FF0000;
            	   margin: 10px;
            	   padding: 10px;
-           	   font-size: 18px;
-           }
+           	   font-size: 18px
+           	}
 
-           .div2{
-           	   flex: 1;
-           	   background-color: #FF0000;
-           	   margin: 10px;
-           	   padding: 10px;
-           	   font-size: 18px;
-           }
-           .div3{
-           	   flex: 4;
-           	   background-color: #FF0000;
-           	   margin: 10px;
-           	   padding: 10px;
-           	   font-size: 18px;
-           }           
+      
 
 
 		</style>
 	</head>
 	<body>
 		<div class="container">
-			<div class="div1">1</div>
-			<div class="div2">2</div>
-			<div class="div3">3</div>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
 		</div>	
 	</body>
 </html>
