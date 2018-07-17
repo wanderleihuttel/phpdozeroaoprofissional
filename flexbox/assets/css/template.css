@@ -176,3 +176,50 @@ ul.opening_hours li {
 	background-color: #36A9E1;
 	margin-top: 10px;
 }
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+article {
+   flex:  1;
+   min-width: 300px;
+   margin-right: 20px;
+}
+article a{
+    text-decoration: none;
+}
+article .news_data {
+    display: flex ;
+}
+article .news_posted_at {
+    background-color: #2B4C99;
+    color: #FFF;
+    font-size: 12px;
+    padding: 10px;
+    margin-right: 2px;
+}
+article .news_comments {
+    background-color: #39AAE1;
+    color: #FFF;
+    font-size: 12px;
+    padding: 10px;
+}
+article .news_thumbnail{
+    margin-top: 30px;
+}
+article .news_thumbnail img {
+    width: 100%;
+    height: auto;
+}
+article .news_title {
+   margin-top: 25px;
+   margin-bottom: 25px;
+   color: #000;
+   font-size: 23px;
+}
+article .news_text {
+    color: #5C5C5C;
+    font-size: 14px;
+    line-height: 150%;
+    margin-bottom: 30px;
+}
