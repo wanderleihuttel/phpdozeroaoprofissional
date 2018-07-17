@@ -25,6 +25,18 @@ header{
    display: flex;
    align-items: center;	
 }
+.menumobile {
+    display: none;
+    width: 40px;
+    height: 40px;
+    margin-top:  40px;
+    margin-bottom:  40px;
+    margin-right: 20px;
+}
+.mm_line {
+    background-color: #39AAE1;
+    height: 5px;
+}
 nav ul ,
 nav li {
 	list-style: none;
@@ -53,9 +65,6 @@ nav a:hover  {
 	background-position: center;
 	background-size: cover;
 	height: 670px;
-}
-.column {
-	flex-direction: column;
 }
 .banner_headline{
 	flex: 1;
@@ -286,4 +295,55 @@ footer .widget_title_text{
     background-image: url('../images/icon_arrow_right_white.png');
     background-position: right center;
     padding-right: 17px;
+}
+
+
+@media (max-width: 600px) {
+   .banner_headline h1 {
+       font-size: 55px;
+   }
+   .banner_headline h2 {
+       font-size: 17px;
+   }   
+   .banner_options{
+       height: auto;
+       flex-direction: column;
+   }
+   .container {
+       flex-direction: column;
+   }
+   #geral section,
+   #geral aside {
+       padding: 20px;
+   }
+   .footer_menu {
+       flex-direction: column; 
+   }
+   .footer_area {
+       flex-direction: column;  
+       padding:  20px;
+   }
+   .footer_copy {
+       padding-left: 20px;
+   }
+   header .container {
+       flex-direction: row; 
+   }
+   nav ul {
+       flex-direction: column;
+       display: none;
+   }
+   header {
+       height: auto;
+   }
+   .logo {
+       padding-left: 20px;
+   }
+   .menumobile {
+       display: flex;
+       flex-direction: column;
+       justify-content: space-around;
+   }
+
+
 }
