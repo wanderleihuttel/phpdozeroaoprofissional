@@ -4,7 +4,7 @@ http://quanticalabs.com/Medicenter/Template/
 body {
 	margin: 0;
 	padding: 0;
-	font-family: Arial;
+	font-family: PT-Sans;
 	font:12px Arial;
 }
 header{
@@ -153,7 +153,7 @@ ul.opening_hours li {
 #geral{
 	display: flex;
 	justify-content: center;
-	background-color: #DDD;	
+	background-color: #F8F8F8;	
 }
 #geral section {
    flex: 2;
@@ -222,4 +222,68 @@ article .news_text {
     font-size: 14px;
     line-height: 150%;
     margin-bottom: 30px;
+}
+footer {
+    background-color: #1E1E1E;
+    display: flex;
+    justify-content: center;
+}
+.footer_menu {
+   display: flex;
+}
+.footer_menu a{
+    text-decoration: none;
+    color: #FFF;
+}
+.fm1,.fm2,.fm3 {
+    flex: 1;
+    color: #FFFFFF;
+    padding: 20px;
+}
+.fm1 {
+    background-color: #39AAE1;
+}
+.fm2 {
+    background-color: #0079C7;
+}
+.fm3 {
+    background-color: #2B4C99;
+}
+.flex-column {
+    flex-direction: column;
+}
+.footer_area {
+    display: flex;
+}
+.footer_item {
+    flex: 1;
+    color: #FFFFFF;
+}
+footer .widget_title_text{
+   color: #FFFFFF;
+}
+.footer_copy {
+    border-top: 1px solid #2C2C2C;
+    height: 40px;
+    line-height: 40px;
+    color:  #5C5C5C;
+    font-size: 12px;
+    margin-top: 30px;
+}
+.fm_title {
+   font-size: 25px;
+}
+.fm_description {
+   margin-top: 15px;
+   line-height: 150%;
+   color: #FFF;
+}
+.fm_description img {
+    padding-left: 10px;
+    line-height: 150%;
+}
+.icon_small_arrow {
+    background-image: url('../images/icon_arrow_right_white.png');
+    background-position: right center;
+    padding-right: 17px;
 }
