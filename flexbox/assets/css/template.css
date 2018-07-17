@@ -1,7 +1,11 @@
+/* layout from:
+http://quanticalabs.com/Medicenter/Template/ 
+*/
 body {
 	margin: 0;
 	padding: 0;
 	font-family: Arial;
+	font:12px Arial;
 }
 header{
 	display: flex;
@@ -61,8 +65,9 @@ nav a:hover  {
 }
 .banner_headline h1 {
 	color:#FFFFFF;
-	font-size: 70px;
+	font-size: 72px;
 	text-shadow: 0px 1px 0px #555555;
+	text-shadow: 0px 1px 0px rgba(0,0,0,0.5);
 	margin: 0;
 	padding:0;
 	max-width: 350px;
@@ -96,13 +101,46 @@ nav a:hover  {
 .banner3 {
 	background-color: #2B4C99;
 }
+.opening_hours {
+	display: flex;
+	flex-direction: column;
+}
+ul.opening_hours{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;	
+}
+ul.opening_hours .value {
+	float: right;
+}
+ul.opening_hours li:first-child {
+    padding-top: 12px;
+}
+ul.opening_hours li {
+   display: list-item;
+   padding: 12px 0;
+   border-bottom: 1px solid #E0E0E0;
+   background-position: left center;
+   background-repeat: no-repeat;
+   line-height: 120%;
+   border-color: #4468B2;
+}
+.clearfix:after {
+    font-size: 0px;
+    content: ".";
+    display: block;
+    height: 0px;
+    visibility: hidden;
+    clear: both;
+}
 .banner_title {
    font-size: 25px;
 }
 .banner_description{
-	font-size: 14px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+   margin-top: 19px;
+   line-height: 150%;
+   color: #FFF;
+   text-shadow: 0px 1px 0px rgba(0,0,0,0.5);	
 }
 .banner_options a {
 	display: inline-block;
@@ -111,4 +149,30 @@ nav a:hover  {
 	color: #FFF;
 	font-size: 14px;
 	text-decoration: none; 
+}
+#geral{
+	display: flex;
+	justify-content: center;
+	background-color: #DDD;	
+}
+#geral section {
+   flex: 2;
+}
+#geral aside {
+   flex: 1;
+}
+.widget_title {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+.widget_title_text {
+	color: #000;
+	font-size: 12px;
+	font-weight: bold;
+}
+.widget_title_bar {
+	width: 50px;
+	height: 2px;
+	background-color: #36A9E1;
+	margin-top: 10px;
 }
