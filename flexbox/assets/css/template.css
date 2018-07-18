@@ -301,13 +301,17 @@ footer .widget_title_text{
 @media (max-width: 600px) {
    .banner_headline h1 {
        font-size: 55px;
+       margin-left: 10px;
+       margin-top: 10px;
    }
    .banner_headline h2 {
        font-size: 17px;
-   }   
+       margin-left: 10px;
+       margin-bottom: 10px;
+   }
    .banner_options{
        height: auto;
-       flex-direction: column;
+       flex-direction: column;       
    }
    .container {
        flex-direction: column;
@@ -332,6 +336,10 @@ footer .widget_title_text{
    nav ul {
        flex-direction: column;
        display: none;
+       position: absolute;
+       left: 0;
+       width: 100%;
+       background-color: #FFF;
    }
    header {
        height: auto;
@@ -344,6 +352,7 @@ footer .widget_title_text{
        flex-direction: column;
        justify-content: space-around;
    }
-
-
+   #banner{
+       height: auto;
+   }
 }
