@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        
+        function addBall(){
+            color = "rgb(" + Math.floor(Math.random() * 255)   + "," + Math.floor(Math.random() * 255) + ","   + Math.floor(Math.random() * 255) + ")";
+            var ball = document.createElement("div");
+            ball.setAttribute("class", "ball");
+            var p1 = Math.floor(Math.random() * 500);
+            var p2 = Math.floor(Math.random() * 400);
+            ball.setAttribute("style", "left:" + p1 + "px; top: "+ p2 + "px; background-color:" + color);
+            ball.setAttribute("onclick", "explodeBall(this);");
+            document.body.appendChild(ball);
+        }
+        
+        function explodeBall(el){
+            document.body.removeChild(el);
+        }
+
+        function removeAllBall(){
+            [].forEach.call(document.querySelectorAll('.ball'),function(e){
+              e.parentNode.removeChild(e);
+            });
+        }
+        
+        function start(){
+            interval = setInterval(addBall, 1000);
+        }
+
+        function stop(){
+            clearInterval(interval);
+            removeAllBall();
+        }
+
+    </script>
+    <style type="text/css">
+    body {
+        font-family: Arial;
+    }
+     .ball {
+        background-color : #000000;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        border-radius: 25px;
+        /*cursor: pointer;*/
+     }
+     .game_title{
+        font-size: 16px;
+        font-weight: bold;
+        color: #000000;
+     }
+     .flex {
+        display: flex;
+     }
+ 
+    </style>
+    <title>Explode Balls</title>
+</head>
+<body>
+    <div class="game_title">Explode Balls</div>
+    <button onclick="start();">start</button>
+    <button onclick="stop();">stop</button>
+</body>
+</html>
