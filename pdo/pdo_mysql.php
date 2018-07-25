@@ -10,7 +10,7 @@
 try {
 
     // Variables definition
-    $dsn = "mysql:dbname=somedbname;host=localhost;dbport=3306;charset=utf8;";
+    $dsn = "mysql:dbname=somedbname;host=localhost;port=3306;charset=utf8;";
     $dbuser = "root";
     $dbpass = "";
 
