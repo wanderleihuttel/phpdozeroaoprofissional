@@ -1,12 +1,3 @@
-<script>
-function excluir (id){
-    var excluir = confirm("Tem certeza que deseja excluir o cadastro?");
-    if (excluir == true){ 
-      window.location = "excluir.php?id=" + id;
-    }
-}
-</script>
-
 <?php
 
 require_once 'config.php';
@@ -36,13 +27,32 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
     }
 
 ?>
-<div class="container">
-    <div class="painel">
-    <form action="" method="post">
-        Nome:  <input type="text" name="nome" value="<?php echo $row['nome']; ?>"> <br/>
-        Email: <input type="text" name="email" value="<?php echo $row['email']; ?>"><br/>
-    <input type="button" onclick="window.history.back();" value="Cancelar">
-    <input type="submit" value="Salvar">
-    </form>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Módulo 9 - Aula 23 - Exemplo: Controle de Usuários</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <form action="" method="post">
+               <legend><h2>Editar Usuário</h2></legend>
+               <div class="row">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome..." value="<?php echo $row['nome']; ?>">
+                </div>
+
+               <div class="row">
+                   <label for="email">Email</label>
+                   <input type="email" id="email" name="email" placeholder="Digite seu email..." value="<?php echo $row['email']; ?>">
+                </div>
+
+                <div class="row">       
+                    <input type="submit" value="Salvar">
+                    <input type="button" onclick="window.history.back();" value="Cancelar">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

@@ -24,6 +24,7 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
     <body>  
         <div class="container">
             <form action="" method="post">
+                <legend><h2>Adicionar Usuário</h2></legend>
                <div class="row">
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" placeholder="Digite seu nome...">
@@ -38,9 +39,9 @@ if (isset($_POST['nome']) && !empty($_POST['nome'])) {
                    <label for="senha">Senha</label>
                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha...">
                 </div>
-                <div class="row">       
-                    <input type="button" onclick="window.history.back();" value="Cancelar">
+                <div class="row">
                     <input type="submit" value="Salvar">
+                    <input type="button" onclick="window.history.back();" value="Cancelar">
                 </div>
             </form>
         </div>

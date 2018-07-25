@@ -16,7 +16,8 @@
 </head>
 <body>
     <div class="container">
-    <a href="adicionar.php" class="btn">Novo usuário</a><br/>
+    <a href="adicionar.php">Novo usuário</a><br/>
+
     <table>
         <tr>
             <th>Nome</th>
