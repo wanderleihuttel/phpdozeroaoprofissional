@@ -1,0 +1,19 @@
+.pure-menu-horizontal li a {
+    color: #EEE;
+}
+.pure-menu-horizontal li a:hover,
+.pure-menu-horizontal li a:focus {
+    
+    border: none;
+    color: #2d3e50;
+}
+.pure-menu-horizontal {
+    background: #2d3e50;
+}
+.usuario-logado {
+    float: right;
+    color: #FFF;
+    line-height: 45px;
+    padding-right: 30px;
+    font-size: 20px: 
+}
