@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 GRID LAYOUT</title>
+    <style>
+     * { 
+          padding = 0; 
+          margin: 0 
+      }
+      .container {
+        color: #FFFFFF;
+        background-color: #CCC;
+        height: 500px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-flow: row wrap ;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: flex-start;
+      }
+
+      .item {
+        border: 2px solid #000;
+        height:  100px;
+        width: 200px;
+        background-color: #0072ff;
+        margin:  5px;
+      }
+
+      .item:nth-child(1){
+       /*align-self: center;
+       order: 4;*/
+       /*flex: ;*/
+       flex-grow: 1;
+       flex-shrink: 1;
+       flex-basis: auto;
+      }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+        <div class="item">D</div>
+    </div>
+    
+</body>
+</html>
