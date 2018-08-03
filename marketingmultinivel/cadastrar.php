@@ -45,5 +45,6 @@ if ( !empty($_POST['nome']) && !empty($_POST['email'])) {
         <input type="email" name="email"><br/><br/>
         <input type="submit" value="Salvar">
     </form>
+    <p><a href="index.php">Voltar</a></p>
 </body>
 </html>

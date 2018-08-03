@@ -1,12 +1,12 @@
 <?php
 session_start();
 require_once("config.php");
+require_once("funcoes.php");
 
 if(empty($_SESSION['mmn_login'])){
     header("Location: login.php");
     exit;
 }
-
 
 $id = $_SESSION['mmn_login'];
 $sql = "select * from usuarios where id = :id";
@@ -22,6 +22,8 @@ if($stmt->rowCount() > 0) {
     exit;
 }
 
+$lista = listar($id,4);
+
 ?>
 
 <!DOCTYPE html>
@@ -35,5 +37,8 @@ if($stmt->rowCount() > 0) {
     <h2>Usuário logado: <?php echo $nome; ?>
     <p><a href="cadastrar.php">Cadastrar novo usuário</a></p>
     <p><a href="sair.php">Logout</a></p>
+    <hr>
+    <h4>Lista de cadastros</h4>
+     <?php echo exibir($lista); ?>
 </body>
 </html>
