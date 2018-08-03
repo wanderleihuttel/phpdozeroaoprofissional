@@ -1,8 +1,8 @@
 <?php
 try {
    $dsn = "mysql:dbname=projeto_registroporconvite;host=localhost;port=3306;charset=utf8";
-   $user = "php";
-   $password = "";
+   $dbuser = "cursophp";
+   $dbpass = "cursophp";
 
    $options = array ( 
         PDO::ATTR_CASE => PDO::CASE_LOWER,
