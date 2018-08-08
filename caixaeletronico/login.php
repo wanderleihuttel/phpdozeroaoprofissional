@@ -2,8 +2,6 @@
 session_start();
 require_once('config.php');
 
-print_r($_POST);
-
 if( isset($_POST['agencia'])  && !empty($_POST['agencia']) ){
 
     $agencia = addslashes($_POST['agencia']);
@@ -42,7 +40,6 @@ if( isset($_POST['agencia'])  && !empty($_POST['agencia']) ){
         Senha: </br>
         <input type="password" name="senha"></br/><br/>
         <input type="submit" value="Entrar">
-
     </form>
 </body>
 </html>
