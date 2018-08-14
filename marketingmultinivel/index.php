@@ -26,7 +26,7 @@ if($stmt->rowCount() > 0) {
     exit;
 }
 
-$lista = listar($id,4);
+$lista = listar($id,10);
 
 ?>
 
@@ -34,7 +34,9 @@ $lista = listar($id,4);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sistema de Marketin Multinível</title>
+    <title>Sistema de Marketing Multinível</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.5/jstree.min.js"></script>    
 </head>
 <body>
     <h1>Sistema de Marketing Multinível</h1>
