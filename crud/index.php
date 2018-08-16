@@ -15,7 +15,7 @@ $contato = new Contato();
 <body>
     <div class="container">
         <div class="row">
-            <h3>Relação de Usuários</h3>            
+            <h3>Relação de Usuários - Listagem</h3>
         </div>
         <div class="row">
             <a href="adicionar.php" class="btn btn-sm btn-primary mb-1">Adicionar</a>
