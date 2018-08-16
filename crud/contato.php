@@ -65,13 +65,37 @@
             }
         } //fim getAll
 
-        public function editar($id, $nome) {
-            $sql = "UPDATE contatos SET nome = :nome WHERE id = :id";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindValue(":id", $id);
-            $stmt->bindValue(":nome", $nome);
-            $stmt->execute();
-            if ($stmt->rowCount()>0){
+        public function editar($id, $nome, $email) {
+            if ($this->getEmail($id) == $email){
+                $sql = "UPDATE contatos SET nome = :nome WHERE id = :id";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->bindValue(":id", $id);
+                $stmt->bindValue(":nome", $nome);
+                $stmt->execute();
+                return true;
+            } else if ($this->getEmail($id) != $email){
+                if(!$this->existeEmail($email)){
+                    $sql = "UPDATE contatos SET nome = :nome, email = :email WHERE id = :id";
+                    $stmt = $this->pdo->prepare($sql);
+                    $stmt->bindValue(":id", $id);
+                    $stmt->bindValue(":nome", $nome);
+                    $stmt->bindValue(":email", $email);
+                    $stmt->execute();
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+
+            if(!$this->existeEmail($email)){
+                $sql = "UPDATE contatos SET nome = :nome, email = :email WHERE id = :id";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->bindValue(":id", $id);
+                $stmt->bindValue(":nome", $nome);
+                $stmt->bindValue(":email", $email);
+                $stmt->execute();
                 return true;
             } else {
                 return false;
@@ -89,7 +113,34 @@
             } else {
                 return false;
             }
-        }
+        } // fim excluir
+
+
+        public function getNome($id) {
+            $sql = "SELECT nome FROM contatos WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
+             if ($stmt->rowCount() > 0) {
+                $row = $stmt->fetch();
+                return $row['nome'];
+            } else {
+                return false;
+            }
+         } // fim getNome
+
+        public function getEmail($id) {
+            $sql = "SELECT email FROM contatos WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
+             if ($stmt->rowCount() > 0) {
+                $row = $stmt->fetch();
+                return $row['email'];
+            } else {
+                return false;
+            }
+         } // fim getEmail
 
         private function existeEmail($email) {
             $sql = "SELECT email FROM contatos WHERE email = :email";
