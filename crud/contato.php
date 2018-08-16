@@ -39,20 +39,19 @@
             }
         } // fim adicionar
 
-        public function getNome( $email ) {
-            $sql = "SELECT nome FROM contatos WHERE email = :email";
+        public function getInfo( $id ) {
+            $sql = "SELECT * FROM contatos WHERE id = :id";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindValue(":email", $email);
+            $stmt->bindValue(":id", $id);
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
                 $row = $stmt->fetch();
-                return $row['nome'];
+                return $row;
             } else {
-                return '';
+                return array();
             }
-
-        }
+        } // fim getNome
 
         public function getAll() {
             $sql = "SELECT * FROM contatos";
@@ -66,13 +65,13 @@
             }
         } //fim getAll
 
-        public function editar($nome, $email) {
-            if($this->existeEmail($email)){
-                $sql = "UPDATE contatos SET nome = :nome WHERE email = :email";
-                $stmt = $this->pdo->prepare($sql);
-                $stmt->bindValue(":nome", $nome);
-                $stmt->bindValue(":email", $email);
-                $stmt->execute();
+        public function editar($id, $nome) {
+            $sql = "UPDATE contatos SET nome = :nome WHERE id = :id";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(":id", $id);
+            $stmt->bindValue(":nome", $nome);
+            $stmt->execute();
+            if ($stmt->rowCount()>0){
                 return true;
             } else {
                 return false;

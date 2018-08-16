@@ -2,15 +2,28 @@
 require_once("contato.php");
 $contato = new Contato();
 
-if( isset($_POST['email']) && !empty($_POST['email'])){
-    $nome = addslashes($_POST['nome']);
-    $email = addslashes($_POST['email']);
+if(isset($_GET['id'])){
+  $id = addslashes($_GET['id']);
+  $info = $contato->getInfo($id);
+  
+  if(empty($info['email'])){
+    header("Location: index.php");
+    exit;
+  }
 
-    if($contato->adicionar($email, $nome)){
+} 
+
+if ( isset($_POST['email']) && !empty($_POST['email'])){
+    $id = addslashes($_POST['id']);
+    $nome = addslashes($_POST['nome']);
+
+    if($contato->editar($id, $nome)){
         header("Location: index.php");
         exit;
     }
 }
+
+
 
 ?>
 
@@ -25,17 +38,18 @@ if( isset($_POST['email']) && !empty($_POST['email'])){
 <body>
     <div class="container">
         <div class="row">
-            <h3>Adicionar Usuário</h3>            
+            <h3>Editar Usuário</h3>            
         </div>
         <div class="row">
             <form method="POST">
               <div class="form-group">
                 <label for="nome">Nome:</label>
-                <input type="text" name="nome" class="form-control form-control-sm"  placeholder="Digite o seu nome...">
+                <input type="hidden" name="id" value="<?php echo $info['id']; ?>">
+                <input type="text" name="nome" class="form-control form-control-sm" placeholder="Digite o seu nome..." value="<?php echo $info['nome']; ?>">
               </div>
               <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" name="email" class="form-control form-control-sm" placeholder="Digite o seu email...">
+                <input type="text"  readonly name="email" class="form-control-plaintext font-weight-bold" placeholder="Digite o seu email..." value="<?php echo $info['email']; ?>">
               </div>
               <button type="submit" class="btn btn-sm btn-primary">Salvar</button>
               <a href="index.php" class="btn btn-sm btn-danger">Cancelar</a>
