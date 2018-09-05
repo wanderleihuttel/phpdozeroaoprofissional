@@ -2,6 +2,17 @@
 require_once("contato.php");
 $contato = new Contato();
 
+if ( isset($_POST['email']) && !empty($_POST['email'])){
+    $id = addslashes($_POST['id']);
+    $nome = addslashes($_POST['nome']);
+    $email = addslashes($_POST['email']);
+
+    if($contato->editar($id, $nome, $email)){
+        header("Location: index.php");
+        exit;
+    }
+} 
+
 if(isset($_GET['id'])){
   $id = addslashes($_GET['id']);
   $info = $contato->getInfo($id);
@@ -12,16 +23,6 @@ if(isset($_GET['id'])){
   }
 
 } 
-
-if ( isset($_POST['email']) && !empty($_POST['email'])){
-    $id = addslashes($_POST['id']);
-    $nome = addslashes($_POST['nome']);
-
-    if($contato->editar($id, $nome)){
-        header("Location: index.php");
-        exit;
-    }
-}
 
 
 
@@ -49,7 +50,7 @@ if ( isset($_POST['email']) && !empty($_POST['email'])){
               </div>
               <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="text"  readonly name="email" class="form-control-plaintext font-weight-bold" placeholder="Digite o seu email..." value="<?php echo $info['email']; ?>">
+                <input type="email" name="email" class="form-control form-control-sm" placeholder="Digite o seu email..." value="<?php echo $info['email']; ?>">
               </div>
               <button type="submit" class="btn btn-sm btn-primary">Salvar</button>
               <a href="index.php" class="btn btn-sm btn-danger">Cancelar</a>
