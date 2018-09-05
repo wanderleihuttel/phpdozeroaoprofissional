@@ -16,8 +16,9 @@ try {
 
     // PDO Firebird options
     $options = array (
-        PDO::ATTR_CASE => PDO::CASE_LOWER,    //columns lower case
-        PDO::FB_ATTR_TIMESTAMP_FORMAT => '%s' //datetime as timestamp 
+        PDO::ATTR_CASE => PDO::CASE_LOWER,     //columns lower case
+        PDO::FB_ATTR_TIMESTAMP_FORMAT => '%s', //datetime as timestamp 
+        PDO::ATTR_AUTOCOMMIT => false          // autocommit false by default
     );
     
 
