@@ -3,15 +3,15 @@ require_once('pages/header.php');
 require_once('classes/usuario.php');
 ?>
 <div class="container">
-    <h1>Cadastrar</h1>
+    <h1 class="mt-3">Cadastrar</h1>
     <?php
-
 
 $usuario = new Usuarios();
 if( isset($_POST['nome']) && (!empty($_POST['nome'])) &&
     isset($_POST['email']) && (!empty($_POST['email'])) &&
     isset($_POST['telefone']) && (!empty($_POST['telefone'])) &&
     isset($_POST['senha']) && (!empty($_POST['senha'])) ){
+
     $nome = addslashes($_POST['nome']);
     $email = addslashes($_POST['email']);
     $telefone = addslashes($_POST['telefone']);
@@ -36,7 +36,7 @@ if( isset($_POST['nome']) && (!empty($_POST['nome'])) &&
         </div>
     <?php
     }
-} else {
+} else if (!empty($_POST['submit'])){
     ?>
         <div class="alert alert-warning" role="alert">
             Preencha todos os campos!

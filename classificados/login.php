@@ -3,7 +3,7 @@ require_once('pages/header.php');
 require_once('classes/usuario.php');
 ?>
 <div class="container">
-    <h1>Efetuar login</h1>
+    <h1 class="mt-3">Efetuar login</h1>
     <?php
 
 
