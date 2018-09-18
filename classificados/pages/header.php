@@ -1,3 +1,6 @@
+<?php
+require_once("config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +17,13 @@
             </div>
             <div class="navbar-collapse collapse justify-content-between">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="" class="nav-link">Cadastrar</a></li>
+                    <?php  if ( isset($_SESSION['cLogin']) && !(empty($_SERVER['cLogin']))) : ?>
+                    <li class="nav-item"><a href="" class="nav-link">Meus anúncios</a></li>
+                    <li class="nav-item"><a href="" class="nav-link">Sair</a></li>
+                    <?php else:?>
+                    <li class="nav-item"><a href="cadastro.php" class="nav-link">Cadastrar</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Entrar</a></li>
+                    <?php endif;?>
                 </ul>
             </div>
         </div>
