@@ -18,9 +18,23 @@ if( isset($_POST['nome']) && (!empty($_POST['nome'])) &&
     $senha = addslashes($_POST['senha']);
 
     if($usuario->cadastrar($nome, $email, $telefone, $senha)){
-        // do something
-    } else {
+    ?>
+    <div class="alert alert-success" role="alert">
+        Usuário cadastrado com sucesso!
+        <a href="login.php" class="alert-link">Efetue agora o login</a>
+    </div>
 
+    <?php
+    } else {
+    ?>
+        <div class="alert alert-warning" role="alert">
+            Este usuário já existe!
+            <a href="login.php" class="alert-link">Efetue o login</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php
     }
 } else {
     ?>
