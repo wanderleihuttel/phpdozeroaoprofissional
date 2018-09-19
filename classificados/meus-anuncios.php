@@ -1,6 +1,6 @@
 <?php
 require_once('pages/header.php');
-require_once('classes/anuncios.php');
+require_once('classes/anuncio.php');
 if(empty($_SESSION['cLogin'])){
 ?>
     <script type="text/javascript">window.location.href="login.php";</script>
@@ -22,7 +22,7 @@ if(empty($_SESSION['cLogin'])){
         </thead>
         <tbody>
             <?php
-            $anuncio = new Anuncios();
+            $anuncio = new Anuncio();
             $anuncios = $anuncio->getMeusAnuncios();
             foreach ($anuncios as $row):
             ?>

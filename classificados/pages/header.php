@@ -3,7 +3,7 @@ require_once("config.php");
 require_once('classes/usuario.php');
 
 if ( isset($_SESSION['cLogin']) && !(empty($_SESSION['cLogin']))){
-    $usuario_logado = Usuarios::getUserNameById($_SESSION['cLogin']);
+    $usuario_logado = Usuario::getUserNameById($_SESSION['cLogin']);
 }
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ if ( isset($_SESSION['cLogin']) && !(empty($_SESSION['cLogin']))){
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong>Usuário: </strong><?php echo $usuario_logado; ?></a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="meusanuncios.php">Meus anúncios</a>
+                        <a class="dropdown-item" href="meus-anuncios.php">Meus anúncios</a>
                         <a class="dropdown-item" href="sair.php">Sair</a>
                       </div>
                     </li>

@@ -6,7 +6,7 @@ require_once('classes/usuario.php');
     <h1 class="mt-3">Cadastrar</h1>
     <?php
 
-$usuario = new Usuarios();
+$usuario = new Usuario();
 if( isset($_POST['nome']) && (!empty($_POST['nome'])) &&
     isset($_POST['email']) && (!empty($_POST['email'])) &&
     isset($_POST['telefone']) && (!empty($_POST['telefone'])) &&

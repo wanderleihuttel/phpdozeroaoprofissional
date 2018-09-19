@@ -7,7 +7,7 @@ require_once('classes/usuario.php');
     <?php
 
 
-$usuario = new Usuarios();
+$usuario = new Usuario();
 if( isset($_POST['email']) && (!empty($_POST['email'])) &&
     isset($_POST['senha']) && (!empty($_POST['senha'])) ){
     $email = addslashes($_POST['email']);
