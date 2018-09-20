@@ -9,8 +9,8 @@ if(empty($_SESSION['cLogin'])){
 }
 ?>
 <div class="container">
-    <h1 class="mt-3">Meus anúncios</h1>
-    <a href="adicionar-anuncio.php" class="btn btn-light mb-2">Adicionar Anúncio</a>
+    <h1>Meus anúncios</h1>
+    <a href="adicionar-anuncio.php" class="btn btn-dark mb-2">Adicionar Anúncio</a>
     <table class="table table-striped table-condensed">
         <thead>
             <tr>
@@ -27,10 +27,19 @@ if(empty($_SESSION['cLogin'])){
             foreach ($anuncios as $row):
             ?>
                 <tr>
-                    <td><img src="assets/img/anuncio/<?php echo $row['url']; ?>"/></td>
+                    <td>
+                        <?php if ( !empty($row['url']) ):?>
+                            <img src="assets/img/anuncio/<?php echo $row['url']; ?>"/>
+                        <?php else: ?>
+                            <img src="assets/img/default.png" height="50" />
+                        <?php endif; ?>
+                    </td>
                     <td><?php echo $row['titulo']; ?></td>
                     <td><?php echo number_format($row['valor'], 2, ",", "."); ?></td>
-                    <td>Ações</td>
+                    <td>
+                        <a href="editar-anuncio.php?id=<?php echo $row['id']; ?>" class="btn btn-dark">Editar</a>
+                        <a href="excluir-anuncio.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Excluir</a>
+                    </td>
                 </tr>
 
             <?php

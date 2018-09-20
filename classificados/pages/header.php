@@ -15,7 +15,7 @@ if ( isset($_SESSION['cLogin']) && !(empty($_SESSION['cLogin']))){
     <title>Classificados</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="./" class="navbar-brand">Classificados</a>

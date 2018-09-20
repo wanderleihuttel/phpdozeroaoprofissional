@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(empty($_SESSION['cLogin'])){
+    header("Location: lgin.php");
+    exit;
+}
+
 require_once('pages/header.php');
 require_once('classes/usuario.php');
 ?>

@@ -26,10 +26,10 @@ if( isset($_POST['id_categoria']) && (!empty($_POST['id_categoria'])) &&
     $estado_conservacao = addslashes($_POST['estado_conservacao']);
 
     $anuncio = new Anuncio();
-    if($anuncio->adicionarAnuncio($id_categoria, $titulo, $descricao, $valor, $estado_conservacao)){
+    if($anuncio->editarAnuncio($_GET['id'], $id_categoria, $titulo, $descricao, $valor, $estado_conservacao)){
     ?>
     <div class="alert alert-success" role="alert">
-        Anúncio cadastrado com sucesso!
+        Anúncio alterado com sucesso!
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -47,8 +47,18 @@ if( isset($_POST['id_categoria']) && (!empty($_POST['id_categoria'])) &&
     <?php
 }
 
+if( isset($_GET['id']) && !empty($_GET['id']) ) {
+    $id = addslashes($_GET['id']);
+    $anuncio = new Anuncio();
+    $info = $anuncio->getAnuncioById($id);
+} else {
 ?>
-    <h1>Novo anúncio</h1>
+    <script type="text/javascript">window.location.href="meus-anuncios.php";</script>
+<?php
+}
+
+?>
+    <h1>Editar anúncio</h1>
     <form method="POST" ecntype="multipart/form-data">
         <div class="form-group">
             <label for="id_categoria">Categoria</label>
@@ -58,7 +68,7 @@ if( isset($_POST['id_categoria']) && (!empty($_POST['id_categoria'])) &&
                 $categorias = $categoria->getCategorias();
                 foreach ($categorias as $row):
                 ?>
-                <option value="<?php echo $row['id'];?>"><?php echo $row['nome'];?></option>
+                <option value="<?php echo $row['id']; ?>"  <?php echo ($info['id_categoria'] == $row['id']) ? 'selected' :''; ?> ><?php echo $row['nome'];?></option>
                 <?php
                 endforeach;
                 ?>
@@ -66,22 +76,22 @@ if( isset($_POST['id_categoria']) && (!empty($_POST['id_categoria'])) &&
         </div>
         <div class="form-group">
             <label for="titulo">Título</label>
-            <input type="text" name="titulo" class="form-control">
+            <input type="text" name="titulo" value="<?php echo $info['titulo']; ?>" class="form-control">
         </div>
         <div class="form-group">
             <label for="descricao">Descrição</label>
-            <textarea name="descricao" class="form-control"></textarea>
+            <textarea name="descricao" class="form-control"><?php echo $info['descricao']; ?></textarea>
         </div>
         <div class="form-group">
             <label for="valor">Valor</label>
-            <input type="text" name="valor" class="form-control">
+            <input type="text" name="valor" class="form-control" value="<?php echo number_format($info['valor'], 2, ',', '.'); ?>">
         </div>
         <div class="form-group">
             <label for="estado_conservacao">Estado de conservação</label>
             <select name="estado_conservacao" class="form-control">
-                <option value="0">Ruim</option>
-                <option value="1">Bom</option>
-                <option value="2">Ótimo</option>
+                <option value="0" <?php echo ($info['estado_conservacao'] == 0) ? 'selected' :''; ?> >Ruim</option>
+                <option value="1" <?php echo ($info['estado_conservacao'] == 1) ? 'selected' :''; ?> >Bom</option>
+                <option value="2" <?php echo ($info['estado_conservacao'] == 2) ? 'selected' :''; ?> >Ótimo</option>
             </select>
         </div>
 
