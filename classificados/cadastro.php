@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(empty($_SESSION['cLogin'])){
-    header("Location: lgin.php");
+    header("Location: login.php");
     exit;
 }
 

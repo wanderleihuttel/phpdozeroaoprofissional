@@ -10,8 +10,9 @@ if(empty($_SESSION['cLogin'])){
 if( isset($_GET['id']) && !empty($_GET['id']) ){
     $id = addslashes($_GET['id']);
     $anuncio = new Anuncio();
-    if( $anuncio->excluirAnuncio($id) ){
-        header("Location: meus-anuncios.php");
+    $id_anuncio = $anuncio->excluirFoto($id);
+    if( $id_anuncio > 0 ){
+        header("Location: editar-anuncio.php?id={$id_anuncio}");
         exit;
     }
 }

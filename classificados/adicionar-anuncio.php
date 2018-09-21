@@ -25,6 +25,8 @@ if( isset($_POST['id_categoria']) && (!empty($_POST['id_categoria'])) &&
     $valor = str_replace(",", ".", str_replace(".","",addslashes($_POST['valor'])));
     $estado_conservacao = addslashes($_POST['estado_conservacao']);
 
+
+
     $anuncio = new Anuncio();
     if($anuncio->adicionarAnuncio($id_categoria, $titulo, $descricao, $valor, $estado_conservacao)){
     ?>
@@ -84,7 +86,6 @@ if( isset($_POST['id_categoria']) && (!empty($_POST['id_categoria'])) &&
                 <option value="2">Ótimo</option>
             </select>
         </div>
-
         <input type="submit" name="submit" value="Salvar" class="btn btn-dark">
         <a href="meus-anuncios.php" class="btn btn-dark">Cancelar</a>
 

@@ -60,4 +60,14 @@ class Usuario {
             return false;
         }
     }
+
+    public function getTotalUsuarios(){
+        global $pdo;
+        $sql = "SELECT count(*) AS total FROM usuario";
+        $stmt = $pdo->query($sql);
+        if( $stmt->rowCount() > 0 ){
+            $row = $stmt->fetch();
+            return $row['total'];
+        }
+    }
 }

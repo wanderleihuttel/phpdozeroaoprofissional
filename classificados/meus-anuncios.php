@@ -29,9 +29,9 @@ if(empty($_SESSION['cLogin'])){
                 <tr>
                     <td>
                         <?php if ( !empty($row['url']) ):?>
-                            <img src="assets/img/anuncio/<?php echo $row['url']; ?>"/>
+                            <img src="assets/img/anuncio/<?php echo $row['url']; ?>" height="80"/>
                         <?php else: ?>
-                            <img src="assets/img/default.png" height="50" />
+                            <img src="assets/img/default.png" height="80" />
                         <?php endif; ?>
                     </td>
                     <td><?php echo $row['titulo']; ?></td>
