@@ -2,6 +2,11 @@
 <?php
 require_once('classes/anuncio.php');
 require_once('classes/usuario.php');
+
+if(empty($_SESSION['cLogin'])){
+    header("Location: login.php");
+    exit;
+}
 $anuncio = new Anuncio();
 $usuario = new Usuario();
 

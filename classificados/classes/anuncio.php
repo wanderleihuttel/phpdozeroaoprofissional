@@ -16,7 +16,16 @@ class Anuncio {
     public function getAnuncioById($id) {
         global $pdo;
         $array = [];
-        $sql = "SELECT * FROM anuncio WHERE id = :id";
+        $sql = "SELECT *,
+                (SELECT categoria.nome
+                    FROM categoria
+                    WHERE categoria.id = anuncio.id_categoria
+                ) AS categoria,
+                (SELECT usuario.telefone
+                    FROM usuario
+                    WHERE usuario.id = anuncio.id_usuario
+                ) AS telefone
+        FROM anuncio WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(":id", $id);
         $stmt->execute();
