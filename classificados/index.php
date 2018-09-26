@@ -132,7 +132,7 @@ $categorias = $categoria->getCategorias();
             <ul class="pagination">
                 <?php for( $i=1; $i <= $total_paginas; $i++): ?>
                     <li class="page-item <?php echo ($i==$p)?'active':'';?>">
-                        <a class="page-link" href="index.php?p=<?php echo $i; ?>">
+                        <a class="page-link" href="index.php?p=<?php $f['filtro'] = $filtro; echo $i . "&" . http_build_query($f); ?>">
                             <?php echo $i; ?>
                         </a>
                     </li>
