@@ -2,15 +2,55 @@
 
 class Anuncio {
 
-    public function getTotalAnuncios(){
+    public function getTotalAnuncios($filtro){
         global $pdo;
-        $sql = "SELECT count(*) AS total FROM anuncio";
-        $stmt = $pdo->query($sql);
+
+        $array = [];
+        $filtrostring = array("1=1");
+        if(!empty($filtro['categoria'])){
+            $filtrostring[] = 'anuncio.id_categoria = :id_categoria';
+        }
+        if( $filtro['valor_minimo'] >= 0 && $filtro['valor_maximo'] >=0 ){
+            $filtrostring[] = 'anuncio.valor BETWEEN :valor_minimo AND :valor_maximo';
+        }
+        if( !empty($filtro['estado_conservacao']) ){
+            $filtrostring[] = 'anuncio.estado_conservacao = :estado_conservacao';
+        }
+
+        $sql = "SELECT count(*) AS total FROM anuncio WHERE " . implode(' AND ', $filtrostring );
+        $stmt = $pdo->prepare($sql);
+
+        if(!empty($filtro['categoria'])){
+            $stmt->bindValue(":id_categoria", $filtro['categoria']);
+        }
+        if( $filtro['valor_minimo'] >= 0 && $filtro['valor_maximo'] >=0 ){
+            $stmt->bindValue(":valor_minimo", $filtro['valor_minimo']);
+            $stmt->bindValue(":valor_maximo", $filtro['valor_maximo']);
+        }
+        if(!empty($filtro['estado_conservacao'])){
+            $stmt->bindValue(":estado_conservacao", $filtro['estado_conservacao']);
+        }
+        $stmt->execute();
+
+
         if( $stmt->rowCount() > 0 ){
             $row = $stmt->fetch();
             return $row['total'];
         }
     }
+
+
+    public function getMaxPreco(){
+        global $pdo;
+        $sql = "SELECT  MAX(valor) AS maximo FROM anuncio";
+        $stmt = $pdo->query($sql);
+        if( $stmt->rowCount() > 0 ){
+            $row = $stmt->fetch();
+            return $row['maximo'];
+        }
+    }
+
+
 
 
     public function getAnuncioById($id) {
@@ -43,13 +83,34 @@ class Anuncio {
         return $array;
     }
 
-    public function getUltimosAnuncios($pagina_atual, $item_por_pagina){
+
+
+    public function getUltimosAnuncios($pagina_atual, $item_por_pagina, $filtro){
         global $pdo;
 
         $offset = ($pagina_atual -1) * $item_por_pagina;
         $rows = $item_por_pagina;
 
         $array = [];
+        $filtrostring = array("1=1");
+        if( !empty($filtro['valor_minimo']) ){
+            //$filtro['valor_minimo'] = 0;
+        }
+
+        if( !empty($filtro['categoria']) ){
+            $filtrostring[] = 'anuncio.id_categoria = :id_categoria';
+        }
+        if( $filtro['valor_minimo'] >= 0 && $filtro['valor_maximo'] >=0 ){
+            $filtrostring[] = 'anuncio.valor BETWEEN :valor_minimo AND :valor_maximo';
+        }
+        if( !empty($filtro['valor_minimo']) && !empty($filtro['valor_maximo']) ){
+            $filtrostring[] = 'anuncio.valor BETWEEN :valor_minimo AND :valor_maximo';
+        }
+        if( !empty($filtro['estado_conservacao']) ){
+            $filtrostring[] = 'anuncio.estado_conservacao = :estado_conservacao';
+        }
+
+
         $sql = "SELECT *,
                     (SELECT anuncio_imagem.url
                     FROM anuncio_imagem
@@ -60,11 +121,35 @@ class Anuncio {
                     WHERE categoria.id = anuncio.id_categoria
                     ) AS categoria
                 FROM anuncio
-                WHERE anuncio.id_usuario = :id_usuario
+                WHERE " . implode(' AND ', $filtrostring ) . "
                 ORDER BY anuncio.id DESC
                 LIMIT {$offset}, {$rows}";
+
+        $sql2 = "SELECT anuncio.id, anuncio.id_usuario, anuncio.id_categoria, anuncio.titulo, anuncio.descricao, anuncio.valor, anuncio.estado_conservacao,
+                (SELECT anuncio_imagem.url FROM anuncio_imagem WHERE anuncio_imagem.id_anuncio = anuncio.id LIMIT 1 ) AS url, categoria.nome AS categoria
+                FROM anuncio
+                LEFT JOIN categoria ON (anuncio.id_categoria = categoria.id)
+                WHERE " . implode(' AND ', $filtrostring ) . "
+                ORDER BY anuncio.id DESC
+                LIMIT 0, 2";
+
+
         $stmt = $pdo->prepare($sql);
-        $stmt->bindValue(":id_usuario", $_SESSION['cLogin']);
+        if( !empty($filtro['categoria']) ){
+            $stmt->bindValue(":id_categoria", $filtro['categoria']);
+        }
+        if( $filtro['valor_minimo'] >= 0 && $filtro['valor_maximo'] >=0 ){
+            $stmt->bindValue(":valor_minimo", $filtro['valor_minimo']);
+            $stmt->bindValue(":valor_maximo", $filtro['valor_maximo']);
+        }
+        if(!empty($filtro['estado_conservacao'])){
+            $stmt->bindValue(":estado_conservacao", $filtro['estado_conservacao']);
+        }
+        /*
+        echo "<pre>";
+        print_r( $stmt->debugDumpParams() );
+        echo "</pre>";
+        */
         $stmt->execute();
         if( $stmt->rowCount() > 0){
             $array = $stmt->fetchAll();

@@ -94,9 +94,9 @@ if( isset($_GET['id']) && !empty($_GET['id']) ) {
         <div class="form-group">
             <label for="estado_conservacao">Estado de conservação</label>
             <select name="estado_conservacao" class="form-control">
-                <option value="0" <?php echo ($info['estado_conservacao'] == 0) ? 'selected' :''; ?> >Ruim</option>
-                <option value="1" <?php echo ($info['estado_conservacao'] == 1) ? 'selected' :''; ?> >Bom</option>
-                <option value="2" <?php echo ($info['estado_conservacao'] == 2) ? 'selected' :''; ?> >Ótimo</option>
+                <option value="1" <?php echo ($info['estado_conservacao'] == 1) ? 'selected' :''; ?> >Ruim</option>
+                <option value="2" <?php echo ($info['estado_conservacao'] == 2) ? 'selected' :''; ?> >Bom</option>
+                <option value="3" <?php echo ($info['estado_conservacao'] == 3) ? 'selected' :''; ?> >Ótimo</option>
             </select>
         </div>
 

@@ -81,9 +81,9 @@ if( isset($_POST['id_categoria']) && (!empty($_POST['id_categoria'])) &&
         <div class="form-group">
             <label for="estado_conservacao">Estado de conservação</label>
             <select name="estado_conservacao" class="form-control">
-                <option value="0">Ruim</option>
-                <option value="1">Bom</option>
-                <option value="2">Ótimo</option>
+                <option value="1">Ruim</option>
+                <option value="2">Bom</option>
+                <option value="3">Ótimo</option>
             </select>
         </div>
         <input type="submit" name="submit" value="Salvar" class="btn btn-dark">
