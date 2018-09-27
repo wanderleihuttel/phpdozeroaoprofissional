@@ -1,0 +1,1 @@
+<h1>Seja bem vindo <?php echo $nome; ?>!</h1>

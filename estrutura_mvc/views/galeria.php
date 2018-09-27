@@ -1,0 +1,1 @@
+<h3>Olá! Você possui <?php echo $quantidade; ?> anúncios!</h3>

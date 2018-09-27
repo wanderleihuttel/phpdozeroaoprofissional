@@ -1,15 +1,10 @@
 <?php
 
-class galeriaController{
+class galeriaController extends Controller{
     public function index(){
-        echo "Página Index Galeria";
-    }
-
-    public function abrir($id){
-        if(!empty($id)){
-            echo "Abrindo galeria: " . $id;
-        } else {
-            echo "É preciso informar uma galeria";
-        }
+        $dados = [
+            'quantidade' => 129
+        ];
+        $this->loadTemplate('galeria', $dados);
     }
 }

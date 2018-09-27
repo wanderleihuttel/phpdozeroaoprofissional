@@ -8,7 +8,7 @@ define('DS', DIRECTORY_SEPARATOR);
 $config = [];
 
 if ( ENVIRONMENT == 'development'){
-    define('BASE_URL', 'http://192.168.1.87/phpdozeroaoprofissional/estrutura_mvc/');
+    define('BASE_URL', 'http://192.168.1.87/phpdozeroaoprofissional/estrutura_mvc');
     $config = [
         'driver'   => 'mysql',
         'host'     => 'localhost',

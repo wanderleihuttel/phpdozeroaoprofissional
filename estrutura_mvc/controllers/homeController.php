@@ -1,7 +1,13 @@
 <?php
 
-class homeController {
+class homeController extends Controller {
+
     public function index(){
-        echo "Index do Home";
+        $dados = [
+            'quantidade' => 5,
+            'nome'       => 'Wanderlei'
+        ];
+        $this->loadTemplate('home', $dados);
+
     }
 }
