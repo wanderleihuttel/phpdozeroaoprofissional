@@ -1,6 +1,9 @@
 <?php
 require_once 'environment.php';
 
+define('BASE_DIR', __DIR__);
+define('DS', DIRECTORY_SEPARATOR);
+
 
 $config = [];
 
