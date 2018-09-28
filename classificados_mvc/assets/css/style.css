@@ -1,0 +1,14 @@
+.foto_item {
+    width: 220px;
+    height: 200px;
+    text-align: center;
+    float: left;
+}
+
+.foto_item img {
+    width: 200px;
+}
+
+.alert, .alert-danger {
+    display: none;
+}
