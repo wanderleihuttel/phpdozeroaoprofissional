@@ -1,6 +1,6 @@
 <?php
 
-class controller {
+class Controller {
 
     public function loadView($viewName, $viewData = [] ){
         extract($viewData);

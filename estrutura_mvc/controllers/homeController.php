@@ -3,9 +3,13 @@
 class homeController extends Controller {
 
     public function index(){
-        $dados = [
-            'quantidade' => 5,
-            'nome'       => 'Wanderlei'
+        $anuncio = new Anuncios();
+        $usuario = new Usuarios();
+
+        $dados['result'] = [
+            'quantidade' => $anuncio->getQuantidade(),
+            'nome'       => $usuario->getNome(),
+            'idade'      => $usuario->getIdade()
         ];
         $this->loadTemplate('home', $dados);
 
