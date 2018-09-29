@@ -6,13 +6,12 @@ class loginController extends Controller {
         $this->loadTemplate('login');
     }
 
-
-
     public function login(){
         $usuario = new Usuario();
         $dados = [];
         if( isset($_POST['email']) && (!empty($_POST['email'])) &&
             isset($_POST['senha']) && (!empty($_POST['senha'])) ){
+
             $email = addslashes($_POST['email']);
             $senha = addslashes($_POST['senha']);
 
@@ -20,13 +19,17 @@ class loginController extends Controller {
                 header("Location: " . BASE_URL . '/home');
             } else {
                 $dados = [
-                    'alert_message' => 'Usuário e/ou senhas incorretos!'
+                    'alert' => 'alert-warning',
+                    'message' => 'Usuário e/ou senhas incorretos!'
                 ];
-                $this->loadTemplate('login', $dados);
             }
         } else {
-            $this->loadTemplate('login', $dados);
+            $dados = [
+                'alert' => 'alert-warning',
+                'message' => 'Favor informar usuário e senha!'
+            ];
         }
+        $this->loadTemplate('login', $dados);
     }
 
 

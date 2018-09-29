@@ -11,7 +11,7 @@ class Usuario extends Model {
 
         if( $stmt->rowCount() == 0 ) {
             $sql = "INSERT INTO usuario (nome, email, telefone, senha) VALUES (:nome, :email, :telefone, :senha)";
-            $stmt = $pdo->prepare($sql);
+            $stmt = $this->db->prepare($sql);
             $stmt->bindValue(":nome", $nome);
             $stmt->bindValue(":email", $email);
             $stmt->bindValue(":telefone", $telefone);
