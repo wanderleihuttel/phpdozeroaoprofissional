@@ -15,5 +15,4 @@ class Controller {
         extract($viewData);
         require 'views' . DS . $viewName . '.php';
     }
-
 }

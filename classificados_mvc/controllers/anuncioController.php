@@ -79,21 +79,21 @@ class anuncioController extends Controller {
 
     public function salvar(){
 
-        print_r($_POST);
-        exit;
-
         $dados = [];
         if( isset($_POST['id_categoria']) && (!empty($_POST['id_categoria'])) &&
             isset($_POST['titulo']) && (!empty($_POST['titulo'])) &&
             isset($_POST['descricao']) && (!empty($_POST['descricao'])) &&
             isset($_POST['valor']) && (!empty($_POST['valor'])) &&
-            isset($_POST['estado_conservacao']) ){
+            isset($_POST['estado_conservacao']) && (!empty($_POST['estado_conservacao'])) &&
+            isset($_POST['id']) && (!empty($_POST['id'])) ){
 
             $id_categoria = addslashes($_POST['id_categoria']);
             $titulo = addslashes($_POST['titulo']);
             $descricao = addslashes($_POST['descricao']);
             $valor = str_replace(",", ".", str_replace(".","",addslashes($_POST['valor'])));
             $estado_conservacao = addslashes($_POST['estado_conservacao']);
+            $id = addslashes($_POST['id']);
+
             if( isset($_FILES['fotos']) ){
                 $fotos = $_FILES['fotos'];
             } else {
@@ -101,13 +101,12 @@ class anuncioController extends Controller {
             }
 
             $anuncio = new Anuncio();
-            $x = 1;
-            //if($anuncio->editarAnuncio($_GET['id'], $id_categoria, $titulo, $descricao, $valor, $estado_conservacao, $fotos)){
-            if( $x ){
+            if($anuncio->editarAnuncio($id, $id_categoria, $titulo, $descricao, $valor, $estado_conservacao, $fotos)){
                 $dados = [
-                    'alert'    => 'alert-success',
-                    'message' => 'Usuário cadastrado com sucesso! <a href="' . BASE_URL . '/login" class="alert-link">Efetue o login</a>'
+                    'alert'    => 'alert-warning',
+                    'message' => 'Anúncio editado com sucesso!'
                 ];
+                header("Location: " . BASE_URL . "/anuncio/editar/{$id}");
             } else {
                 $dados = [
                     'alert'    => 'alert-warning',
@@ -121,7 +120,7 @@ class anuncioController extends Controller {
                 'message' => 'Favor preencher todos os campos!'
             ];
         }
-        $this->loadTemplate('editar-anuncio', $dados);
+        $this->loadTemplate('anuncio', $dados);
     } // end mehod salvar
 
 
