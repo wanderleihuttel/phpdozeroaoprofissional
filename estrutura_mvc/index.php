@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('config.php');
+require_once('routes.php');
 
 spl_autoload_register(function($class){
     if(file_exists('controllers' . DS . $class .'.php')){
@@ -10,7 +11,6 @@ spl_autoload_register(function($class){
     } else if(file_exists('core' . DS . $class . '.php')){
         require('core' . DS . $class . '.php');
     }
-
 });
 
 $core = new Core();
