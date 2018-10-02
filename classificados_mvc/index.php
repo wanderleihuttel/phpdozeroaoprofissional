@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('config.php');
+require_once('routes.php');
 
 spl_autoload_register(function($class){
     if(file_exists('controllers' . DS . $class .'.php')){
