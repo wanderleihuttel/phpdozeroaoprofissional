@@ -74,7 +74,7 @@
                         </td>
                         <td class="align-middle">
 
-                            <a href="<?php echo BASE_URL; ?>/produto/abrir/<?php echo $row['id'];?>"><?php echo $row['titulo']; ?></a>
+                            <a href="<?php echo BASE_URL; ?>/produto/<?php echo $row['id'];?>"><?php echo $row['titulo']; ?></a>
 
                             <h5><span class="badge badge-info"><?php echo $row['categoria']; ?></span></h5>
 

@@ -2,5 +2,5 @@
     global $routes;
 
     $routes = [
-        '/galeria/{id}/{titulo}' => '/galeria/abrir/:id/:titulo'
+        '/produto/{id}' => '/produto/abrir/:id'
     ];
