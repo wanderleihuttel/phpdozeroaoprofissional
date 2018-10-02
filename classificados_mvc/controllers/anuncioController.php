@@ -109,8 +109,8 @@ class anuncioController extends Controller {
                 header("Location: " . BASE_URL . "/anuncio/editar/{$id}");
             } else {
                 $dados = [
-                    'alert'    => 'alert-warning',
-                    'message' => 'Este usuário já existe!'
+                    'alert'    => 'alert-danger',
+                    'message' => 'Ocorreu um erro ao salvar o anúncio'
                 ];
             }
 
@@ -120,8 +120,8 @@ class anuncioController extends Controller {
                 'message' => 'Favor preencher todos os campos!'
             ];
         }
-        $this->loadTemplate('anuncio', $dados);
-    } // end mehod salvar
+        $this->redirect('/anuncio/index');
+    } // end method salvar
 
 
 } // end class anuncioController

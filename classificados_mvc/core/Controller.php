@@ -15,4 +15,8 @@ class Controller {
         extract($viewData);
         require 'views' . DS . $viewName . '.php';
     }
+
+    public function redirect( $route = '' ){
+        header("Location: " . BASE_URL . $route);
+    }
 }
