@@ -3,6 +3,8 @@
 class notfoundController extends Controller {
 
     public function index(){
-        $this->loadTemplate('error404');
+
+        $this->loadTemplate('erro404');
+
     }
 }
