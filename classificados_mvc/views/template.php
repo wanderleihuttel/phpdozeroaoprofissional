@@ -33,7 +33,7 @@
                     </li>
                     <?php else:?>
                     <li class="nav-item"><a href="<?php echo BASE_URL; ?>/login/novo" class="nav-link">Cadastrar</a></li>
-                    <li class="nav-item"><a href="<?php echo BASE_URL; ?>/login" class="nav-link">Entrar</a></li>
+                    <li class="nav-item"><a href="<?php echo BASE_URL; ?>/login/entrar" class="nav-link">Entrar</a></li>
                     <?php endif;?>
                 </ul>
             </div>

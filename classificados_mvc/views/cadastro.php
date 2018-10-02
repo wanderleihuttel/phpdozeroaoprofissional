@@ -19,7 +19,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <form method="POST" action="<?php echo BASE_URL; ?>/cadastro/novo">
+    <form method="POST" action="<?php echo BASE_URL; ?>/login/novo">
         <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" name="nome" class="form-control">

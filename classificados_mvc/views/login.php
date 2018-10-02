@@ -18,7 +18,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <form method="POST" action="<?php echo BASE_URL; ?>/login/login">
+    <form method="POST" action="<?php echo BASE_URL; ?>/login/entrar">
         <div class="form-group">
             <label for="email">Email</label>
             <input type="text" name="email" class="form-control">
