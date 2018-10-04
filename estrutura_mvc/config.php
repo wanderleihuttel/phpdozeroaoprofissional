@@ -34,7 +34,7 @@ if ( ENVIRONMENT == 'development'){
 global $db;
 try {
 
-    $dsn = "{$config['driver']}:dbname={$config['driver']};host={$config['host']};port={$config['port']};charset={$config['charset']};";
+    $dsn = "{$config['driver']}:dbname={$config['dbname']};host={$config['host']};port={$config['port']};charset={$config['charset']};";
     $dbuser = $config['dbuser'];
     $dbpass = $config['dbpass'];
     // PDO MySQL options
