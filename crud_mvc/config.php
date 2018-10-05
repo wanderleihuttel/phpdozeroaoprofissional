@@ -13,7 +13,7 @@ if ( ENVIRONMENT == 'development'){
         'driver'   => 'mysql',
         'host'     => 'localhost',
         'port'     => 3306,
-        'dbname'   => 'estrutura_mvc',
+        'dbname'   => 'crud_mvc',
         'dbuser'   => 'cursophp',
         'dbpass'   => 'cursophp',
         'charset'  => 'utf8'
@@ -24,7 +24,7 @@ if ( ENVIRONMENT == 'development'){
         'driver'   => 'mysql',
         'host'     => 'localhost',
         'port'     => 3306,
-        'dbname'   => 'estrutura_mvc',
+        'dbname'   => 'crud_mvc',
         'dbuser'   => 'cursophp',
         'dbpass'   => 'cursophp',
         'charset'  => 'utf8'

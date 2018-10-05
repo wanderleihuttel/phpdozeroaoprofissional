@@ -9,14 +9,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>Estrutura MVC</title>
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/style.css">
+    <title>CRUD MVC</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="<?php echo BASE_URL; ?>" class="navbar-brand">MVC</a>
+                <a href="<?php echo BASE_URL; ?>" class="navbar-brand">Contatos</a>
             </div>
             <div class="navbar-collapse collapse justify-content-between">
                 <ul class="navbar-nav ml-auto">
@@ -39,7 +39,7 @@
     </nav>
     <div class="container">
         <?php $this->loadViewInTemplate($viewName, $viewData); ?>
-    </div>
+    </div><!-- end div container -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
