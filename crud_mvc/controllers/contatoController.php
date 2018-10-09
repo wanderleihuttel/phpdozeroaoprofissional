@@ -58,6 +58,24 @@ class contatoController extends Controller {
 
     public function delete($id){
 
+        $data = [];
+        if(empty($id)){
+           $this->redirect('/home/index');
+           exit;
+        } else {
+            if( isset($_POST['confirm-delete']) && !empty($_POST['confirm-delete']) ){
+                $contatos = new Contatos();
+                if( $contatos->delete($id) ){
+                    $this->redirect('/home/index');
+                    exit;
+                }
+            } else {
+                $data['id'] = $id;
+                $this->loadTemplate('contato-delete', $data);
+                exit;
+            }
+        }
+        /*
         if(!empty($id)){
             $contatos = new Contatos();
             if( $contatos->delete($id) ){
@@ -65,6 +83,8 @@ class contatoController extends Controller {
             }
         }
         $this->redirect('/home/index');
+        */
+       //$this->loadTemplate('contato-delete', $data);
 
     } // end method delete
 
