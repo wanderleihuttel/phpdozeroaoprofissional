@@ -42,6 +42,7 @@
     <div class="container">
         <?php $this->loadViewInTemplate($viewName, $viewData); ?>
     </div><!-- end div container -->
+    <div class="modal-result"></div>
 </body>
 </html>
 

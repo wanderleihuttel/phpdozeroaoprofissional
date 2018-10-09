@@ -8,6 +8,7 @@ class Controller {
     }
 
     public function loadTemplate( $viewName, $viewData = [] ){
+        extract($viewData);
         require 'views' . DS . 'template.php';
     }
 
@@ -19,4 +20,5 @@ class Controller {
     public function redirect( $route = '' ){
         header("Location: " . BASE_URL . $route);
     }
+
 }
