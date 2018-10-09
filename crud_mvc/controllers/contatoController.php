@@ -2,16 +2,13 @@
 
 class contatoController extends Controller {
 
-    public function index() {}
+    public function index() {
+        // do something
+    } // end method index
+
 
 
     public function add(){
-        $data = [];
-        $this->loadTemplate('contato-add', $data);
-    }
-    // end method add
-
-    public function add_save(){
         $data = [];
         if( isset($_POST['nome']) && !empty($_POST['nome']) &&
             isset($_POST['email']) && !empty($_POST['email']) ){
@@ -23,45 +20,53 @@ class contatoController extends Controller {
                 $this->redirect('/home/index');
             }
         } else {
-            $data = [
-                'alert'   => 'alert-warning',
-                'message' => 'Favor preencher todos os campos!'
-            ];
-            //$this->redirect('/contato/add', $data);
             $this->loadTemplate('contato-add', $data);
             exit;
         }
 
         $this->loadTemplate('contato-add', $data);
-    }
-    // end method index
+    } // end method add
+
+
 
     public function edit($id){
         $data = [];
-        $contatos = new Contatos();
-        $contato = $contatos->getById($id);
-        $data['contato'] = $contato;
-        $this->loadTemplate('contato-edit', $data);
-    }
-    // end method edit
 
-    public function edit_save(){
-        $data = [];
-        if( isset($_POST['id']) && !empty($_POST['id']) &&
-            isset($_POST['nome']) && !empty($_POST['nome']) &&
-            isset($_POST['email']) && !empty($_POST['email']) ){
-            $id = addslashes($_POST['id']);
-            $nome = addslashes($_POST['nome']);
-            $email = addslashes($_POST['email']);
-
+        if( !empty($id)){
             $contatos = new Contatos();
-            if( $contatos->edit($id, $nome, $email) ){
-                $this->redirect('/home/index');
+
+            if( !empty($_POST['nome']) && !empty($_POST['email']) ){
+                $nome = addslashes($_POST['nome']);
+                $email = addslashes($_POST['email']);
+                if( $contatos->edit($id, $nome, $email) ){
+                    $this->redirect('/home/index');
+                    exit;
+                }
+            } else {
+                $data['contato'] = $contatos->getById($id);
+                if(isset($data['contato']['id'])){
+                    $this->loadTemplate('contato-edit', $data);
+                    exit;
+                }
             }
         }
 
-        $this->loadTemplate('contato-add', $data);
-    }
+        $this->redirect('/home/index');
+    } // end method edit
+
+
+
+    public function delete($id){
+
+        if(!empty($id)){
+            $contatos = new Contatos();
+            if( $contatos->delete($id) ){
+                $this->redirect('/home/index');
+            }
+        }
+        $this->redirect('/home/index');
+
+    } // end method delete
 
 
 } // end class contatoController

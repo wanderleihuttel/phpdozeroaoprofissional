@@ -1,11 +1,10 @@
 <div class="row">
     <h3>Editar Contato</h3>
 </div>
-<div class="row">
-    <form method="POST" action="<?php echo BASE_URL; ?>/contato/edit_save">
+<div class="row-fluid">
+    <form method="POST" action="<?php echo BASE_URL; ?>/contato/edit/<?php echo $contato['id']; ?>">
       <div class="form-group">
         <label for="nome">Nome:</label>
-        <input type="hidden" name="id" value="<?php echo $contato['id']; ?>">
         <input type="text" name="nome" class="form-control form-control-sm" placeholder="Digite o seu nome..." value="<?php echo $contato['nome']; ?>">
       </div>
       <div class="form-group">

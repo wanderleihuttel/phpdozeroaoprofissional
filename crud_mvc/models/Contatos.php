@@ -2,31 +2,6 @@
 
 class Contatos extends Model {
 
-    public function getAll() {
-        $data = [];
-        $sql = "SELECT * FROM contatos ORDER BY nome";
-        $stmt = $this->db->query($sql);
-        if( $stmt->rowCount() > 0){
-            $data = $stmt->fetchAll();
-        }
-        return $data;
-    } // end method getAll
-
-
-    public function getById( $id ) {
-        $sql = "SELECT * FROM contatos WHERE id = :id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(":id", $id);
-        $stmt->execute();
-        if ($stmt->rowCount() > 0) {
-            $row = $stmt->fetch();
-            return $row;
-        } else {
-            return array();
-        }
-    } // end method getById
-
-
     public function insert($nome, $email) {
         // 1º passo = verificar se o email já existe no sistema
         // 2º passo = adicionar
@@ -41,20 +16,6 @@ class Contatos extends Model {
             return false;
         }
     } // end method insert
-
-
-    private function email_exists($email) {
-        $sql = "SELECT email FROM contatos WHERE email = :email";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(":email", $email);
-        $stmt->execute();
-        if($stmt->rowCount()>0){
-            return true;
-        } else {
-            return false;
-        }
-    } // end method email_exists
-
 
 
     public function edit($id, $nome, $email) {
@@ -93,6 +54,55 @@ class Contatos extends Model {
         }
     }
     // end method edit
+
+    public function delete($id){
+        $sql = "DELETE FROM contatos WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+        if( $stmt->rowCount() > 0){
+            return true;
+        }
+        return false;
+    }
+
+
+    public function getAll() {
+        $data = [];
+        $sql = "SELECT * FROM contatos ORDER BY nome";
+        $stmt = $this->db->query($sql);
+        if( $stmt->rowCount() > 0){
+            $data = $stmt->fetchAll();
+        }
+        return $data;
+    } // end method getAll
+
+
+    public function getById( $id ) {
+        $sql = "SELECT * FROM contatos WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $row = $stmt->fetch();
+            return $row;
+        } else {
+            return array();
+        }
+    } // end method getById
+
+    private function email_exists($email) {
+        $sql = "SELECT email FROM contatos WHERE email = :email";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":email", $email);
+        $stmt->execute();
+        if($stmt->rowCount()>0){
+            return true;
+        } else {
+            return false;
+        }
+    } // end method email_exists
+
 
     public function getEmail($id) {
         $sql = "SELECT email FROM contatos WHERE id = :id";

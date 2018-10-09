@@ -23,7 +23,7 @@
 </div>
 </div>
 <div class="row-fluid border rounded p-3">
-    <form method="POST" action="<?php echo BASE_URL; ?>/contato/add_save" >
+    <form method="POST" action="<?php echo BASE_URL; ?>/contato/add" >
         <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" name="nome" class="form-control form-control-sm"  placeholder="Digite o seu nome...">
